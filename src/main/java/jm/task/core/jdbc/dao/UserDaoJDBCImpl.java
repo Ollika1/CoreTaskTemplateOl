@@ -12,8 +12,6 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
 
-    private final List<User> list = new ArrayList<>();
-
     public UserDaoJDBCImpl() {
 
     }
@@ -61,6 +59,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public List<User> getAllUsers() {
+        List<User> list = new ArrayList<>();
         String selectAll = "SELECT * FROM myuser.users";
         try(Connection connection = new Util().getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(selectAll);
